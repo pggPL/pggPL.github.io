@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paweł Gadziński | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f0f0f0;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --accent-gold: #b8860b;
+            --border-color: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--bg-secondary);
+            border: 3px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--accent-gold);
+            background: rgba(184, 134, 11, 0.1);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline .card {
+            position: relative;
+        }
+
+        .timeline .card::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            transform: translateX(-4px);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+
+        .card-title a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .card-title a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .card-subtitle {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .card-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* Award highlight */
+        .highlight {
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(184, 134, 11, 0.03) 100%);
+            border-color: var(--accent-gold);
+        }
+
+        .highlight .card-title {
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header, section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .contact-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .card-title {
+                font-size: 0.95rem;
+            }
+
+            .card-content {
+                font-size: 0.85rem;
+            }
+
+            header {
+                padding: 2rem 0 1.5rem;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline .card::before {
+                left: -1.5rem;
+                width: 8px;
+                height: 8px;
+            }
+
+            section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-photo">
+                <img src="photo.jpg" alt="Paweł Gadziński">
+            </div>
+            <h1 class="name">Paweł Gadziński</h1>
+            <div class="contact-links">
+                <a href="mailto:pawelgadzinski@gmail.com">pawelgadzinski@gmail.com</a>
+                <a href="https://github.com/pggPL" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/paweł-gadziński-091082202/" target="_blank">LinkedIn</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="timeline">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Software Engineer @ <a href="https://github.com/NVIDIA/TransformerEngine" target="_blank">NVIDIA Transformer Engine</a></span>
+                        <span class="card-date">Sep 2024 — Present</span>
+                    </div>
+                    <div class="card-subtitle">Warsaw, Poland</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Working on <a href="https://github.com/NVIDIA/TransformerEngine" target="_blank">Transformer Engine</a> — a library for accelerating Transformer models on NVIDIA GPUs. You can see my contributions <a href="https://github.com/NVIDIA/TransformerEngine/pulls?q=author%3ApggPL" target="_blank">here</a>.</li>
+                            <li>I work across all levels of the ML stack: from CUDA kernels to multi-GPU training with the newest hardware and models. Super cool!</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Software Engineering Intern @ <a href="https://github.com/NVIDIA/TransformerEngine" target="_blank">NVIDIA</a></span>
+                        <span class="card-date">Mar — Jun 2024</span>
+                    </div>
+                    <div class="card-subtitle">Santa Clara, CA</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Worked in Transformer Engine team – back then it was the only one library supporting FP8 transformer training.</li>
+                            <li>Started effort on <a href="https://docs.nvidia.com/deeplearning/transformer-engine-releases/release-2.10/user-guide/index.html" target="_blank">generation example for Gemma model</a> – I highly encourage you to read it, it has really nice pictures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Other Internships</span>
+                        <span class="card-date">2022 — 2024</span>
+                    </div>
+                    <div class="card-subtitle">Warsaw, Poland</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Ideas NCBR (Dec 2023 — Feb 2024) — continual learning research internship at leading Polish AI research institute</li>
+                            <li>Huawei (Jul — Sep 2022) — first encounter with Machine Learning, worked on recommendation systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Computer Science @ University of Warsaw</span>
+                        <span class="card-date">Oct 2021 — Sep 2024</span>
+                    </div>
+                    <div class="card-subtitle">Bachelor of Science (3 years)</div>
+                    <div class="card-content">
+                        <p>Focused on mathematics and machine learning electives.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">High School Olympiads</span>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>🥈 <strong>Silver Medal — International Mathematical Olympiad</strong> (<a href="https://www.imo-official.org/participant_r.aspx?id=31117" target="_blank">results</a>)</li>
+                            <li>Participated with success in Polish Olympiad in Informatics as well, although mathematics was more important to me back then</li>
+                            <li>Created <a href="https://github.com/pggPL/wdmo/blob/main/main.pdf" target="_blank">Introduction to Olympiad Mathematics</a> handbook (in Polish)</li>
+                            <li>Worked as website administrator for Polish Mathematical Olympiad (2021–2024), migrated the first stage from letter-based to digital submissions</li>
+                            <li>Member of Main Committee and Problem Selection Committee of Polish Junior Mathematical Olympiad</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Paweł Gadziński</p>
+        </footer>
+    </div>
+</body>
+</html>

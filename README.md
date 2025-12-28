@@ -1,1 +1,3 @@
-# pggpl.github.io
+# pgadzinski.com
+
+https://pgadzinski.com
